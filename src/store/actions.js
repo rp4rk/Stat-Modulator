@@ -18,8 +18,9 @@ export default {
   },
 
   // Load Realms
-  loadRealms({ commit }) {
-    const resource = `https://eu.api.battle.net/wow/realm/status?locale=en_GB&apikey=${process.env.API_KEY}`;
+  loadRealms({ commit, state }) {
+    const region = state.character.region;
+    const resource = `https://${region}.api.battle.net/wow/realm/status?locale=en_US&apikey=${process.env.API_KEY}`;
     axios.get(resource)
       .then(data => commit(types.SET_REALMS, data));
   },
