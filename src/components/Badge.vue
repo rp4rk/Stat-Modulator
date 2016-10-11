@@ -26,12 +26,10 @@ export default {
   display: inline-block;
   margin-left: 50%;
   transform: translateX(-50%);
-
   text-transform: uppercase;
   letter-spacing: 1px;
   font-size: 24px;
   text-align: center;
-
   border-bottom: 1px solid rgba(0,0,0, 0.5);
   border-top: 1px solid rgba(0,0,0, 0.5);
   margin-bottom: 24px;
