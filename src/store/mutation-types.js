@@ -1,0 +1,3 @@
+export const GET_CHARACTER = 'GET_CHARACTER';
+export const SET_REALMS = 'SET_REALMS';
+export const SET_APP_LOAD_STATE = 'SET_APP_LOAD_STATE';
