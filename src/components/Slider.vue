@@ -5,12 +5,12 @@
       <span class="stat-ratio" v-if="stat.ratio">{{`${stat.ratio} / point`}}</span>
     </div>
     <div class="stat-inputs">
-      <input class="base-amount" type="number" v-model="stat.value"></input>
+      <input disabled class="base-amount" type="number" v-model="stat.value"></input>
       <input class="increase-amount" type="number" v-model="stat.modifier"></input>
     </div>
     <div v-if="getStatPercentage" class="stat-overviews">
-      <span class="base-perc">{{ getStatPercentage.base }}%</span>
-      <span class="mod-perc">{{ getStatPercentage.modifier }}%</span>
+      <span class="base-perc">{{ getStatPercentage.base }}{{ amountString }}</span>
+      <span class="mod-perc">{{ getStatPercentage.modifier }}{{ amountString }}</span>
     </div>
     <div v-if="!getStatPercentage" class="stat-overviews error">
       <span>{{ stat.label }} does not have a coefficient.</span>
@@ -25,6 +25,9 @@
   export default {
     props: ['stat', 'mainStat'],
     computed: {
+      amountString() {
+        return this.stat.label === 'Mastery' ? ' Points' : '%';
+      },
       isMainStat() {
         return this.stat.label.toLowerCase() === this.mainStat;
       },
@@ -87,7 +90,7 @@
 
 .base-amount {
   border-top-left-radius: 3px;
-  flex: 3 0 0;
+  flex: 1 0 0;
   border-right: none;
 }
 
@@ -117,7 +120,7 @@
 }
 
 .base-perc {
-  flex: 3 0 0;
+  flex: 1 0 0;
   border-bottom-left-radius: 3px;
 }
 
