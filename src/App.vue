@@ -61,7 +61,7 @@ a {
 }
 
 .header {
-  background-image: url('/static/header-illidan-still.jpg');
+  background-image: url('/header-illidan-still.jpg');
   height: 30vh;
   background-size:cover;
   position: relative;
