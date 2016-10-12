@@ -24,7 +24,6 @@
                 <option>US</option>
                 <option>KR</option>
                 <option>TW</option>
-                <option>SEA</option>
               </select>
             </p>
             <p>

@@ -31,7 +31,7 @@ export const mutations = {
 
     state.character.stats.crit.value = response.data.stats.critRating;
     state.character.stats.haste.value = response.data.stats.hasteRating;
-    state.character.stats.mastery.value = response.data.stats.masteryRating;
+    state.character.stats.mastery.value = response.data.stats.masteryRating + 2800;
     state.character.stats.vers.value = response.data.stats.versatility;
 
     state.character.appLoaded = true;
