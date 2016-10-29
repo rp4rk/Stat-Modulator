@@ -12,6 +12,8 @@ export const state = {
 export const mutations = {
   // Sweet merciful fuck this is ugly but it works
   [types.GET_CHARACTER](state, response) {
+    state.character.artifact = response.data.items.mainHand;
+    state.character.class = response.data.class;
     state.character.image = `http://render-api-${state.character.region}.worldofwarcraft.com/static-render/${state.character.region}/${response.data.thumbnail}`;
     state.character.name = response.data.name;
     state.character.realm = response.data.realm;

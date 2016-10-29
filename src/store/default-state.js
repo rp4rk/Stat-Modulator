@@ -5,7 +5,9 @@ export default {
   image: '',
   mainStat: '',
   appLoaded: false,
+  class: -1,
   realms: [],
+  artifact: {},
   stats: {
     intellect: {
       value: 0,

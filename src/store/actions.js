@@ -7,7 +7,7 @@ export default {
     const name = state.character.name;
     const realm = state.character.realm;
     const region = state.character.region;
-    const resource = `https://${region}.api.battle.net/wow/character/${realm}/${name}?fields=stats,talents&locale=en_US&apikey=${process.env.API_KEY}`;
+    const resource = `https://${region}.api.battle.net/wow/character/${realm}/${name}?fields=stats,talents,items&locale=en_US&apikey=${process.env.API_KEY}`;
     axios.get(resource)
       .then(data => commit(types.GET_CHARACTER, data));
   },
