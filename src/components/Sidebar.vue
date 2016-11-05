@@ -27,16 +27,16 @@
               </select>
             </p>
             <p>
-              <label for="character">Character</label>
-              <input v-model="character.name" type="text" name="character" id="character" />
-            </p>
-            <p>
               <label for="realm">Realm</label>
               <select v-model="character.realm" type="text" name="realm" id="realm">
                 <option v-for="realm in character.realms" v-bind:value="realm.name">
                   {{ realm.name }}
                 </option>
               </select>
+            </p>
+            <p>
+              <label for="character">Character</label>
+              <input v-model="character.name" type="text" name="character" id="character" />
             </p>
             <button>
               Load Character

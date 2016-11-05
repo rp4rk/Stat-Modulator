@@ -2,6 +2,8 @@
 /* eslint-disable no-param-reassign */
 import defaultState from './default-state';
 import * as types from './mutation-types';
+import CONSTANTS from '../assets/constants';
+import Stat from '../models/Stat';
 
 export const STORAGE_KEY = 'stat-modulator';
 
@@ -18,23 +20,24 @@ export const mutations = {
     state.character.name = response.data.name;
     state.character.realm = response.data.realm;
 
-    state.character.stats.intellect.value = response.data.stats.int;
-    state.character.stats.agility.value = response.data.stats.agi;
-    state.character.stats.strength.value = response.data.stats.str;
+    const statMatrix = new Map(CONSTANTS.STATS);
+    state.character.stats = Object.keys(response.data.stats)
+      .filter(statLabel => statMatrix.has(statLabel))
+      .map(statLabel =>
+        new Stat(response.data.stats[statLabel],
+        statMatrix.get(statLabel),
+        CONSTANTS.STATS.filter(stat => stat[0] === statLabel)[0][2])
+      );
 
-    state.character.mainStat = Object.keys(state.character.stats)
+    const mainStat = state.character.stats
       .reduce((prev, current) => {
-        const stats = state.character.stats;
-        if (stats[prev].value < stats[current].value) {
+        if (prev.value < current.value) {
           return current;
         }
         return prev;
       });
 
-    state.character.stats.crit.value = response.data.stats.critRating;
-    state.character.stats.haste.value = response.data.stats.hasteRating;
-    state.character.stats.mastery.value = response.data.stats.masteryRating + 2800;
-    state.character.stats.vers.value = response.data.stats.versatility;
+    state.character.mainStat = mainStat.name;
 
     state.character.appLoaded = true;
   },

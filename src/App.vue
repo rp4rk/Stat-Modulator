@@ -8,13 +8,14 @@
       <sidebar v-if="!character.appLoaded" v-bind:character="character"></sidebar>
       <badge v-if="character.appLoaded" v-bind:character="character"></badge>
       <div v-if="character.appLoaded" class="grid">
-        <slider v-for="stat in character.stats" v-bind:stat="stat" v-bind:mainStat="character.mainStat"></slider>
+        <slider v-for="stat in stats" v-bind:stat="stat"></slider>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import Slider from './components/Slider';
 import Sidebar from './components/Sidebar';
 import Badge from './components/Badge';
@@ -28,10 +29,10 @@ export default {
     NewCharacter,
   },
   computed: {
-    character() {
-      return this.$store.state.character;
-    },
-
+    ...mapGetters({
+      stats: 'getStatsWithProperties',
+      character: 'getCharacter',
+    }),
   },
 };
 </script>

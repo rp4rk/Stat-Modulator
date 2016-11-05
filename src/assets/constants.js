@@ -13,4 +13,13 @@ export default {
     'Druid',
     'Demon Hunter',
   ],
+  STATS: [
+    ['int', 0, 'Intellect'],
+    ['agi', 0, 'Agility'],
+    ['str', 0, 'Strength'],
+    ['critRating', 350, 'Critical Strike'],
+    ['hasteRating', 325, 'Haste'],
+    ['versatility', 400, 'Versatility'],
+    ['masteryRating', 350, 'Mastery'],
+  ],
 };
