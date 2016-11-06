@@ -16,14 +16,3 @@ export default {
   ]),
 };
 </script>
-
-<style>
-
-
-svg {
-  width: 24px;
-  height: 24px;
-  vertical-align: middle;
-  display: inline;
-}
-</style>

@@ -39,6 +39,13 @@ export default {
 
   // Get the relative increase
   getRelativeIncrease() {
-    return Math.abs(Math.round((this.getModifiedAmount() / this.getStatAmount()) * 10000) / 100);
+    return Math.round((this.getModifiedAmount() / this.getStatAmount()) * 10000) / 100;
+  },
+
+  // Get increase relative to base healing
+  getRelativeToBaseIncrease() {
+    const base = 1 + (this.getStatAmount() / 100);
+    const newVal = base + (this.getModifiedAmount() / 100);
+    return this.coefficient ? ((newVal / base) - 1) * 100 : this.getRelativeIncrease();
   },
 };

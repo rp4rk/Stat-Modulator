@@ -30,7 +30,13 @@
       Your {{ stat.name.toLowerCase() }} will be increased by <strong>{{ stat.getModifiedAmount() }}{{ stat.amountString() }}</strong>.
     </p>
     <p class="panel-block">
-      This is a <strong>{{ stat.getRelativeIncrease() }}%</strong> relative {{ stat.modifierString() }} to your {{ stat.name.toLowerCase() }}.
+      This is a <strong>{{ Math.abs(stat.getRelativeIncrease()) }}%</strong> relative {{ stat.modifierString() }} to your {{ stat.name.toLowerCase() }}.
+    </p>
+    <p class="panel-block">
+      <span class="panel-icon">
+        <i class="fa fa-exclamation-circle"></i>
+      </span>
+      This is a <strong>{{ Math.round(stat.getRelativeToBaseIncrease() * 100) / 100 }}%</strong> {{ stat.modifierString() }} over your base output.
     </p>
   </div>
 </template>

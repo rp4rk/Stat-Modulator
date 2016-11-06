@@ -10,6 +10,7 @@
       <div v-if="character.appLoaded" class="columns">
         <slider class="column" v-for="stat in stats" v-bind:stat="stat"></slider>
       </div>
+      <OverallIncrease v-if="character.appLoaded"></OverallIncrease>
     </div>
   </div>
 </template>
@@ -20,6 +21,8 @@ import Slider from './components/Slider';
 import Sidebar from './components/Sidebar';
 import Badge from './components/Badge';
 import NewCharacter from './components/NewCharacter';
+import OverallIncrease from './components/OverallIncrease';
+import Graph from './components/Graph';
 
 export default {
   components: {
@@ -27,6 +30,8 @@ export default {
     Sidebar,
     Badge,
     NewCharacter,
+    OverallIncrease,
+    Graph,
   },
   computed: {
     ...mapGetters({
