@@ -15,8 +15,8 @@ export default {
 
 <style>
 .character-image {
-  width: 128px;
-  height: 128px;
+  width: 96px;
+  height: 96px;
   border-radius: 50%;
   margin: 0 auto 24px;
   display: block;
