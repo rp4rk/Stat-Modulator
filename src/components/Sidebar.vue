@@ -1,8 +1,9 @@
 <template>
   <div class="content">
-    <h2>Import Character</h2>
+    
     <div class="sidebar">
       <div class="info">
+        <h2>Import Character</h2>
         <p>
           This stat modulator will allow you to see the relative benefit of increasing stats on your character.
           Increasing a certain statistic will increase the value of others, therefore devaluing the stat in relation to your other choices.
@@ -19,14 +20,14 @@
         <form class="character-form">
             <p class="control">
               <label class="label" for="region">Region</label>
-              <select class="select" v-on:change="loadRealms" v-model="character.region" type="text" name="region" id="region" >
+              <select class="select is-fullwidth is-primary" v-on:change="loadRealms" v-model="character.region" type="text" name="region" id="region" >
                 <option>EU</option>
                 <option>US</option>
               </select>
             </p>
             <p class="control">
               <label class="label" for="realm">Realm</label>
-              <select class="select" v-model="character.realm" type="text" name="realm" id="realm">
+              <select class="select is-fullwidth" v-model="character.realm" type="text" name="realm" id="realm">
                 <option v-for="realm in character.realms" v-bind:value="realm.name">
                   {{ realm.name }}
                 </option>
@@ -34,7 +35,7 @@
             </p>
             <p class="control">
               <label class="label" for="character">Character</label>
-              <input class="input" v-model="character.name" type="text" name="character" id="character" />
+              <input class="input is-fullwidth" v-model="character.name" type="text" name="character" id="character" />
             </p>
             <a v-on:click="loadCharacter" class="button is-primary">
               Load Character
