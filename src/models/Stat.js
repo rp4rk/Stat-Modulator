@@ -5,7 +5,7 @@ export default class Stat {
     this.coefficient = coefficient;
     this.modifier = 0;
     this.bonuses = [
-      // [String, Float]
+      // { name: String, amount: Float, iconURL: String }
     ];
   }
 }

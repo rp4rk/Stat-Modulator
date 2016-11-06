@@ -1,17 +1,37 @@
 <template>
-  <div v-if="stat.showStat(mainStat)" class="stat-pane">
-    <div class="stat-header-wrapper">
-      <h2 class="stat-header">{{ stat.name }}</h2>
-      <span class="stat-ratio" v-if="stat.coefficient">{{ stat.coefficient }} Rating per {{ stat.amountString() }}</span>
-    </div>
-    <div class="stat-inputs">
-      <input disabled class="base-amount" type="number" v-model="stat.value"></input>
-      <input class="increase-amount" type="number" v-model="stat.modifier"></input>
-    </div>
-    <div v-if="stat.getStatAmount" class="stat-overviews">
-      <span class="base-perc">{{ stat.getStatAmount() }}{{ stat.amountString() }}</span>
-      <span class="mod-perc">{{ stat.getModifiedAmount() }}{{ stat.amountString() }}</span>
-    </div>
+  
+  <div v-if="stat.showStat(mainStat)" class="card stat-card">
+    <header class="card-header">
+     <span class="card-header-title"> {{ stat.name }} </span>
+    </header>
+
+    <p v-if="stat.coefficient" class="panel-block">
+      <span class="panel-icon">
+        <i class="fa fa-info-circle"></i>
+      </span>
+      For 1{{ stat.amountString() }}, you require {{ stat.coefficient }} rating.
+    </p>
+    <p class="panel-block">
+      <span class="panel-icon">
+        <i class="fa fa-info-circle"></i>
+      </span>
+      You currently have <strong>{{ stat.value }}</strong> {{ stat.name.toLowerCase() }}.
+    </p>
+    <p v-if="stat.coefficient" class="panel-block">
+      <span class="panel-icon">
+        <i class="fa fa-line-chart"></i>
+      </span>
+      This represents a <strong>{{ stat.getStatAmount() }}{{ stat.amountString() }}</strong> increase in output.
+    </p>
+    <p class="panel-block">
+      An {{ stat.modifierString() }} of <input class="increase-amount" type="number" v-model="stat.modifier"></input> would have the following effects,
+    </p>
+    <p v-if="stat.coefficient" class="panel-block">
+      Your {{ stat.name.toLowerCase() }} will be increased by <strong>{{ stat.getModifiedAmount() }}{{ stat.amountString() }}</strong>.
+    </p>
+    <p class="panel-block">
+      This is a <strong>{{ stat.getRelativeIncrease() }}%</strong> relative {{ stat.modifierString() }} to your {{ stat.name.toLowerCase() }}.
+    </p>
   </div>
 </template>
 
@@ -28,76 +48,30 @@
   };
 </script>
 
-<style>
-.stat-pane {
-  background-color: rgba(0,0,0, 0.1);
-  border: 1px solid rgba(0,0,0, 0.25);
-  border-radius: 2px;
-  padding: 12px;
+<style lang="scss">
+.stat-card {
+  padding: 0;
 }
 
-.stat-header-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-bottom: 12px;
-  border-bottom: 1px solid rgba(0,0,0, 0,5);
+.stat-card:not(:first-child) {
+  margin-left: 20px;
 }
 
-.stat-header {
-  margin: 0;
-  display: inline-block;
-}
-
-.stat-inputs, .stat-overviews {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.stat-inputs input {
-  border-bottom: none;
-}
-
-.base-amount {
-  border-top-left-radius: 3px;
-  flex: 1 0 0;
-  border-right: none;
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    margin: 0; 
 }
 
 .increase-amount {
-  border-top-right-radius: 3px;
-  flex: 1 0 0;
-  width: 25%; /* Doesn't work without a width specified... somethings not quite right... */
+  border: 0;
+  padding: 5px;
+  width: 50px;  
+  background-color: rgba(0,0,0, 0.2);
+  margin: 0 2px 0 2px;
+  outline: none;
+  border-radius: 3px;
 }
 
-.stat-overviews span {
-  padding: 8px 4px;
-  display: inline-block;
-  background-color: #2BA84A;
-  color: white;
-  font-weight: 700;
-  font-size: 16pt;
-
-  border-bottom: 2px solid rgba(0,0,0, 0.1);
-  box-shadow: 0 2px 1px rgba(0,0,0, 0.1);
-}
-
-.error span{
-  background-color: #C93D3F;
-  width: 100%;
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px;
-}
-
-.base-perc {
-  flex: 1 0 0;
-  border-bottom-left-radius: 3px;
-}
-
-.mod-perc {
-  flex: 1 0 0;
-  border-bottom-right-radius: 3px;
-  border-left: 1px solid rgba(0,0,0, 0.1);
-}
 </style>

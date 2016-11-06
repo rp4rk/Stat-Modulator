@@ -7,8 +7,8 @@
       <NewCharacter v-if="character.appLoaded"></NewCharacter>
       <sidebar v-if="!character.appLoaded" v-bind:character="character"></sidebar>
       <badge v-if="character.appLoaded" v-bind:character="character"></badge>
-      <div v-if="character.appLoaded" class="grid">
-        <slider v-for="stat in stats" v-bind:stat="stat"></slider>
+      <div v-if="character.appLoaded" class="columns">
+        <slider class="column" v-for="stat in stats" v-bind:stat="stat"></slider>
       </div>
     </div>
   </div>
@@ -37,7 +37,9 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+@import "~bulma";
+
 * {
   box-sizing: border-box;
 }
@@ -94,12 +96,7 @@ a {
   letter-spacing: 2px;
 }
 
-h1,h2,h3,h4,h5 {
-  margin-top: 0;
-  text-align: center;
-}
-
-p, span {
+p {
   color: #343434;
 }
 
@@ -107,42 +104,8 @@ p {
   line-height: 1.5;
 }
 
-button{
-  transition: opacity 0.3s ease-in-out;
-}
-
-button:hover {
-  opacity: 0.6;
-  cursor: pointer;
-}
-
 #app {
   padding: 24px;
-}
-
-input, select {
-  font-family: 'PT Sans', Helvetica, sans-serif;
-  font-size: 16pt;
-}
-
-/* Grid System */
-/* https://github.com/Heydon/fukol-grids */
-.grid {
-  display: flex; /* 1 */
-  flex-wrap: wrap; /* 2 */
-  margin: -0.5em; /* 5 (edit me!) */
-  flex-direction: column;
-}
-
-@media screen and (min-width: 1280px) {
-  .grid {
-    flex-direction: row;;
-  }
-}
-
-.grid > * {
-  flex: 1 0 5em; /* 3 (edit me!) */
-  margin: 0.5em; /* 4 (edit me!) */
 }
 
 </style>
