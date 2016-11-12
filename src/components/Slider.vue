@@ -1,43 +1,44 @@
 <template>
-  
-  <div v-if="stat.showStat(mainStat)" class="card stat-card">
-    <header class="card-header">
-     <span class="card-header-title"> {{ stat.name }} </span>
-    </header>
+  <div class="column"  v-if="stat.showStat(mainStat)">
+    <div class="card stat-card">
+      <header class="card-header">
+      <span class="card-header-title"> {{ stat.name }} </span>
+      </header>
 
-    <p v-if="stat.coefficient" class="panel-block">
-      <span class="panel-icon">
-        <i class="fa fa-info-circle"></i>
-      </span>
-      For 1{{ stat.amountString() }}, you require {{ stat.coefficient }} rating.
-    </p>
-    <p class="panel-block">
-      <span class="panel-icon">
-        <i class="fa fa-info-circle"></i>
-      </span>
-      You currently have <strong>{{ stat.value }}</strong> {{ stat.name.toLowerCase() }}.
-    </p>
-    <p v-if="stat.coefficient" class="panel-block">
-      <span class="panel-icon">
-        <i class="fa fa-line-chart"></i>
-      </span>
-      This represents a <strong>{{ stat.getStatAmount() }}{{ stat.amountString() }}</strong> increase in output.
-    </p>
-    <p class="panel-block">
-      An {{ stat.modifierString() }} of <input class="increase-amount" type="number" v-model="stat.modifier"></input> would have the following effects,
-    </p>
-    <p v-if="stat.coefficient" class="panel-block">
-      Your {{ stat.name.toLowerCase() }} will be increased by <strong>{{ stat.getModifiedAmount() }}{{ stat.amountString() }}</strong>.
-    </p>
-    <p class="panel-block">
-      This is a <strong>{{ Math.abs(stat.getRelativeIncrease()) }}%</strong> relative {{ stat.modifierString() }} to your {{ stat.name.toLowerCase() }}.
-    </p>
-    <p class="panel-block">
-      <span class="panel-icon">
-        <i class="fa fa-exclamation-circle"></i>
-      </span>
-      This is a <strong>{{ Math.round(stat.getRelativeToBaseIncrease() * 100) / 100 }}%</strong> {{ stat.modifierString() }} over your base output.
-    </p>
+      <p v-if="stat.coefficient" class="panel-block">
+        <span class="panel-icon">
+          <i class="fa fa-info-circle"></i>
+        </span>
+        For 1{{ stat.amountString() }}, you require {{ stat.coefficient }} rating.
+      </p>
+      <p class="panel-block">
+        <span class="panel-icon">
+          <i class="fa fa-info-circle"></i>
+        </span>
+        You currently have <strong>{{ stat.value }}</strong> {{ stat.name.toLowerCase() }}.
+      </p>
+      <p v-if="stat.coefficient" class="panel-block">
+        <span class="panel-icon">
+          <i class="fa fa-line-chart"></i>
+        </span>
+        This represents a <strong>{{ stat.getStatAmount() }}{{ stat.amountString() }}</strong> increase in output.
+      </p>
+      <p class="panel-block">
+        An {{ stat.modifierString() }} of <input class="increase-amount" type="number" v-model="stat.modifier"></input> would have the following effects,
+      </p>
+      <p v-if="stat.coefficient" class="panel-block">
+        Your {{ stat.name.toLowerCase() }} will be increased by <strong>{{ stat.getModifiedAmount() }}{{ stat.amountString() }}</strong>.
+      </p>
+      <p class="panel-block">
+        This is a <strong>{{ Math.abs(stat.getRelativeIncrease()) }}%</strong> relative {{ stat.modifierString() }} to your {{ stat.name.toLowerCase() }}.
+      </p>
+      <p class="panel-block">
+        <span class="panel-icon">
+          <i class="fa fa-exclamation-circle"></i>
+        </span>
+        This is a <strong>{{ Math.round(stat.getRelativeToBaseIncrease() * 100) / 100 }}%</strong> {{ stat.modifierString() }} over your base output.
+      </p>
+    </div>
   </div>
 </template>
 
@@ -57,11 +58,9 @@
 <style lang="scss">
 .stat-card {
   padding: 0;
+  width: auto;
 }
 
-.stat-card:not(:first-child) {
-  margin-left: 20px;
-}
 
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 

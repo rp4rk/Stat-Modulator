@@ -1,5 +1,7 @@
 <template>
-  <div class="card">
+  <div class="graph-container">
+    <div class="graph">
+    </div>
   </div>
 </template>
 
@@ -7,34 +9,28 @@
   import functionPlot from 'function-plot';
 
   export default {
+    props: ['graph'],
     mounted: function init() {
       functionPlot({
-        title: 'Value of QA in Haste',
-        target: this.$el,
+        target: this.$el.querySelector('.graph'),
+        grid: true,
         disableZoom: true,
         xAxis: {
-          label: 'Critical Strike %',
-          domain: [0, 100],
+          label: this.graph.xLabel,
+          domain: this.graph.xDomain,
         },
         yAxis: {
-          label: 'Haste',
-          domain: [0, 10000],
+          label: this.graph.yLabel,
+          domain: this.graph.yDomain,
         },
-        data: [
-          {
-            fn: '(1 - (1 - x / 100)^5) * 15 * 325',
-          },
-          {
-            fn: '(1 - (1 - x / 100)^4) * 15 * 325',
-          },
-          {
-            fn: '(1 - (1 - x / 100)^5) * 20 * 325',
-          },
-          {
-            fn: '(1 - (1 - x / 100)^4) * 20 * 325',
-          },
-        ],
+        data: this.graph.data,
       });
     },
   };
 </script>
+
+<style lang="scss">
+.graph-container {
+  padding: 14px;
+}
+</style>

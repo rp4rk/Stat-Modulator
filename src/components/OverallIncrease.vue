@@ -1,7 +1,8 @@
 <template>
-  <div class="card is-fullwidth">
-    <div class="card-content">
-      <p>Your changes to your stat profile would result in a {{ totalIncrease }}% increase in output.</p>
+  <div class="box is-fullwidth">
+    <h2 class="title">Raw Increase Estimate</h2>
+    <div class="box-content">
+      <p>The changes to your stat profile would result in a theoretical {{ totalIncrease }}% increase in raw output.</p>
     </div>
   </div>
 </template>

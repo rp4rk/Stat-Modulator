@@ -21,4 +21,8 @@ export default {
       const nextVal = 1 + (next.getRelativeToBaseIncrease() / 100);
       return prev * nextVal;
     }, 100) - 100)) * 100) / 100,
+
+  // Get QA rank
+  getQARank: state =>
+    state.character.artifact.artifactTraits.filter(trait => trait.id === 1108)[0].rank,
 };
